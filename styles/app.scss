@@ -7,59 +7,88 @@
 @use './variables/colors';
 @use './variables/fonts';
 
+.container {
+  max-width: 630px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
 // YOUR CODE
 // Starting writing your stuff below here
-.container {
-    max-width: 630px;
-    margin: 30px auto;
-    line-height: 1.4;
-    @media (max-width: 767px) {
-        padding: 0 15px;
-    }
+#scroll {
+  position: relative;
+  background-color: #f3f3f3;
+  padding: 1rem;
 }
 
-h1 {
-    font-family: fonts.$font-family-headline;
-    font-weight: fonts.$font-weight-headline;
-    font-size: 26px;
+.scroll__graphic {
+  position: sticky;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  margin: 0;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  // background-color: #737272;
+  z-index: 0;
 }
 
-p {
-    font-family: fonts.$font-family-body;
-    font-weight: fonts.$font-weight-body;
-    &.byline {
-        text-transform: uppercase;
-        font-size: 14px;
-    }
-    &.prose {
-        margin: 18px 0;
-        font-size: 18px;
-    }
+.scroll__graphic .chart {
+  text-align: center;
+  padding: 1rem;
+  position: relative;
+  height: 130vh;
+  width: 100%;
+  // -moz-transform: translate(-50%, -50%);
+  // -webkit-transform: translate(-50%, -50%);
+  // transform: translate(-50%, -50%);
+  font-size: 2rem;
+  font-weight: 900;
+  color: #fff;
 }
 
-.table {
-    font-family: fonts.$font-family-table;
-    border-collapse: collapse;
-    width: 100%;
-    caption {
-        text-align: left;
-        text-transform: uppercase;
-        font-weight: bold;
-        font-size: 18px;
-    }
-    td, th {
-        border: 1px solid #ddd;
-        padding: 8px;
-    }
-    tr:nth-child(even) {
-        background-color: colors.$gray;
-    }
-    tr:hover {
-        background-color: #ddd;
-    }
-    th {
-      text-align: left;
-      background-color: colors.$black;
-      color: white;
-    }
+.scroll__text {
+  position: relative;
+  padding: 0;
+  max-width: 20rem;
+  margin: auto;
+}
+
+.step {
+  margin: 110%;
+  color: #e0d5f9;
+  background-color: rgba(0, 0, 0, 0.1);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.step p {
+  // Vertically too
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  padding: 1rem;
+  font-size: 1.25rem;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-weight: 400;
+}
+
+.step.is-active {
+  background-color: rgb(80, 143, 233);
+  color: #3b3b3b;
+}
+#map {
+  width: 100vw; /* Full width of the viewport */
+  height: 100vh; /* Full height of the viewport */
+  position: fixed; /* Fix the map to the viewport */
+  top: 0;
+  left: 0;
+  z-index: 0; /* Ensure it is behind other elements */
 }

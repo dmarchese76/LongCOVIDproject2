@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block styles %}
+<link href="https://unpkg.com/maplibre-gl@^5.8.0/dist/maplibre-gl.css" rel="stylesheet" />
 <link rel="stylesheet" href="{% static 'styles/app.scss' %}">
 {% endblock styles %}
 
@@ -9,40 +10,40 @@
 {% endblock scripts %}
 
 {% block content %}
-<article>
-  <header class="container">
-    <h1 class="headline">{{ meta.headline }}</h1>
-    <img src="{% static 'assets/images/baker.jpg' %}" alt="Baker logo" width=250 />
-    <div class="attribution">
-        {% set comma = joiner() %}
-        <p class="byline">
-          By {%- for author in meta.byline -%}
-          {% if not loop.last %}{{ comma() }}{% elif not loop.first %} and{% endif %} <span class="author" itemscope itemtype="http://schema.org/Person"><a itemprop="url" href="{{ author.url }}">{{ author.name }}</a></span>
-          {%- endfor -%}
-        </p>
-    </div>
-  </header>
-  <div class="container">
-    {% for p in copy.body %}
-        <p class="prose">{{ p.value }}</p>
-    {% endfor %}
-    <table class="table">
-        <caption>Wheat production</caption>
-        <thead>
-            <tr>
-                <th>Year</th>
-                <th>Yield</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for obj in example %}
-            <tr>
-                <td>{{ obj.year }}</td>
-                <td>{{ obj.wheat }}</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-  </div>
-</article>
+
+<section class="container"> 
+  <h1>Long Covid Clinics project</h1>
+  <!-- <p>The last piece of the puzzle is the scrollama callback functions. In the first one, we can trigger changes to the chart by handling which step becomes active. In the enter and exit callback functions, we stick and unstick the graphic, respectively.</p> -->
+  {% for p in copy.top_text %}
+	<p>{{ p.value }}</p>
+  {% endfor %}
+</section>
+
+
+<section id='scroll'>
+	<!--  graphic container  -->
+	<div class='scroll__graphic'>
+		<!--   actual graphic/chart   -->
+		<div class='chart'>
+			<div id="map" style="position: relative; height: 100vh; width: 100%;"></div>
+		</div>
+	</div>
+	<!--  step/text container  -->
+	<div class='scroll__text'>
+		{% for p in copy.steps %}
+			<div class='step' data-step='{{loop.index}}'>
+				<p>{{p.value}}</p>
+			</div>	
+		{% endfor %}
+	</div>
+</section>
+
+<section class="container">
+  <!-- <p>The last piece of the puzzle is the scrollama callback functions. In the first one, we can trigger changes to the chart by handling which step becomes active. In the enter and exit callback functions, we stick and unstick the graphic, respectively.</p>
+  {% for p in copy.bottom_text %} -->
+    <p>{{ p.value }}</p>
+  {% endfor %}
+</section>
+
 {% endblock content %}
+
