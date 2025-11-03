@@ -52373,39 +52373,46 @@
         status: 'No, they never offered care',
       },
     ];
-  console.log('Hello bakers'), console.log(Ai);
+  console.log('Hello bakers');
   const Ei = new Li.Map({
     container: 'map',
     style: 'https://demotiles.maplibre.org/globe.json',
-    center: [-99.9018, 31.9686],
+    center: [-98.5795, 39.8283],
     zoom: 4,
     interactive: !1,
   });
   Ei.on('load', () => {
-    Ei.resize(),
+    Ei.setProjection('equalEarth'),
+      Ei.fitBounds(
+        [
+          [-125, 24.5],
+          [-66.9, 49.4],
+        ],
+        { padding: 80, duration: 1e3 }
+      ),
+      Ei.resize(),
       console.log('init'),
-      Fi(),
-      Oi.setup({
-        container: '#scroll',
-        graphic: '.scroll__graphic',
-        text: '.scroll__text',
-        step: '.scroll__text .step',
-        offset: 0.5,
-        debug: !1,
-      }).onStepEnter(Bi),
-      window.addEventListener('resize', Fi);
-  }),
-    console.log(Li),
-    console.log(Ei);
+      Oi(),
+      ki
+        .setup({
+          container: '#scroll',
+          graphic: '.scroll__graphic',
+          text: '.scroll__text',
+          step: '.scroll__text .step',
+          offset: 0.5,
+          debug: !1,
+        })
+        .onStepEnter(Bi),
+      window.addEventListener('resize', Oi);
+  });
   const Ri = (function (t) {
-      return 'string' == typeof t
-        ? new St([[document.querySelector(t)]], [document.documentElement])
-        : new St([[t]], It);
-    })('#scroll'),
-    zi = Ri.select('.scroll__graphic');
-  zi.select('.chart');
-  const ki = Ri.select('.scroll__text').selectAll('.step'),
-    Oi = (function () {
+    return 'string' == typeof t
+      ? new St([[document.querySelector(t)]], [document.documentElement])
+      : new St([[t]], It);
+  })('#scroll');
+  Ri.select('.scroll__graphic').select('.chart');
+  const zi = Ri.select('.scroll__text').selectAll('.step'),
+    ki = (function () {
       let c,
         h,
         u,
@@ -52612,42 +52619,50 @@
         R
       );
     })();
-  function Fi() {
-    const t = Math.floor(0.5 * window.innerHeight);
-    ki.style('height', t + 'px');
-    var e = window.innerHeight / 2,
-      i = (window.innerHeight - e) / 2;
-    zi.style('height', e + 'px').style('top', i + 'px'), Oi.resize();
+  function Oi() {
+    ki.resize();
   }
+  let Fi = new Map();
   function Bi(t) {
     console.log('handleStepEnter', t),
-      ki.classed('is-active', function (e, i) {
+      zi.classed('is-active', function (e, i) {
         return i === t.index;
       });
-    var e,
-      i,
-      r = t.index + 1;
-    1 == r &&
+    var e = t.index + 1;
+    1 == e &&
       (console.log('DO THE STEP ONE STUFF...'),
-      (e = -87.6298),
-      (i = 41.8781),
-      Ei.flyTo({ center: [e, i], zoom: 4, essential: !0 }),
+      Fi.forEach((t) => {
+        t.remove();
+      }),
+      Fi.clear(),
       Ai.forEach((t) => {
-        if ((console.log(t), t.Longitude && t.Latitude)) {
-          let e = 'blue';
-          'yes' === t.status ? (e = 'green') : 'no' === t.status && (e = 'red');
-          const i = document.createElement('div');
+        if (t.Longitude && t.Latitude) {
+          const e =
+              'yes' === t.status ? 'green' : 'no' === t.status ? 'red' : 'blue',
+            i = document.createElement('div');
           (i.style.backgroundColor = e),
             (i.style.width = '12px'),
             (i.style.height = '12px'),
             (i.style.borderRadius = '50%'),
-            (i.style.border = '2px solid white'),
-            new Li.Marker({ element: i })
-              .setLngLat([t.Longitude, t.Latitude])
-              .addTo(Ei);
+            (i.style.border = '2px solid white');
+          const r = new Li.Marker({ element: i })
+            .setLngLat([t.Longitude, t.Latitude])
+            .addTo(Ei);
+          Fi.set(`${t.Longitude},${t.Latitude}`, r);
         }
       })),
-      console.log('activeStep', r);
+      4 == e &&
+        (console.log('DO THE STEP FOUR STUFF...'),
+        Fi.forEach((t, e) => {
+          console.log('key', e);
+          const [i, r] = e.split(',').map(Number),
+            n = Ai.find((t) => t.Longitude === i && t.Latitude === r);
+          if ((console.log('markerData', n), n)) {
+            t.getElement().style.backgroundColor =
+              'Did not answer the survey' === n.status ? 'gray' : 'blue';
+          }
+        })),
+      console.log('activeStep', e);
   }
 })();
-//# sourceMappingURL=app.7c57b534.js.map
+//# sourceMappingURL=app.3b3051d8.js.map

@@ -5,12 +5,11 @@ import scrollama from 'scrollama';
 import * as d3 from 'd3';
 import maplibregl from 'maplibre-gl';
 import lc from '../_data/lc.json';
-console.log(lc);
 
 const map = new maplibregl.Map({
   container: 'map', // container id
   style: 'https://demotiles.maplibre.org/globe.json', // style URL
-  center: [-99.9018, 31.9686], // Chicago's coordinates [lng, lat]
+  center: [-98.5795, 39.8283], // Chicago's coordinates [lng, lat]
   zoom: 4, // starting zoom
   interactive: false, // Disable map interactions
 });
@@ -23,13 +22,21 @@ function panAndZoomMap(lng, lat, zoomLevel) {
   });
 }
 map.on('load', () => {
+  map.setProjection('equalEarth');
+  map.fitBounds(
+    [
+      [-125.0, 24.5], // Southwest coordinates (roughly southern CA/TX)
+      [-66.9, 49.4], // Northeast coordinates (roughly Maine/North Dakota)
+    ],
+    {
+      padding: 80, // Optional: adds padding around the bounds
+      duration: 1000, // Optional: animation duration in ms
+    }
+  );
   map.resize();
   init();
 });
 // Example usage: Pan and zoom to New York City
-
-console.log(maplibregl);
-console.log(map);
 
 // using d3 for convenience, and storing a selected elements
 const container = d3.select('#scroll');
@@ -44,20 +51,22 @@ const scroller = scrollama();
 function handleResize() {
   // 1. update height of step elements for breathing room between steps
   const stepHeight = Math.floor(window.innerHeight * 0.5);
-  step.style('height', stepHeight + 'px');
+  //step.style('height', stepHeight + 'px');
 
   // 2. update height of graphic element
 
   var graphicHeight = window.innerHeight / 2;
   var graphicMarginTop = (window.innerHeight - graphicHeight) / 2;
 
-  graphic
-    .style('height', graphicHeight + 'px')
-    .style('top', graphicMarginTop + 'px');
+  graphic;
+  //.style('height', graphicHeight + 'px')
+  // .style('top', graphicMarginTop + 'px');
 
   // 4. tell scrollama to update new element dimensions
   scroller.resize();
 }
+
+let markerLookup = new Map();
 
 function handleStepEnter(response) {
   console.log('handleStepEnter', response);
@@ -73,22 +82,23 @@ function handleStepEnter(response) {
   // Clear the chart ...
   if (activeStep == 1) {
     console.log('DO THE STEP ONE STUFF...');
-    panAndZoomMap(-87.6298, 41.8781, 2); // Adjust zoom level to fit all pins
+    //panAndZoomMap(-87.6298, 41.8781, 2); // Adjust zoom level to fit all pins
+    // Clear out the markerLookup and remove existing markers from the map
+    markerLookup.forEach((marker) => {
+      marker.remove();
+    });
+    markerLookup.clear();
 
-    // Add pins for all locations in lc.json
-
+    // Create markers and store them in the lookup
     lc.forEach((location) => {
-      console.log(location);
       if (location.Longitude && location.Latitude) {
-        // Ensure coordinates are valid
-        let markerColor = 'blue'; // Default color
-        if (location.status === 'yes') {
-          markerColor = 'green'; // Green for "yes"
-        } else if (location.status === 'no') {
-          markerColor = 'red'; // Red for "no"
-        }
+        const markerColor =
+          location.status === 'yes'
+            ? 'green'
+            : location.status === 'no'
+            ? 'red'
+            : 'blue';
 
-        // Create a custom marker element
         const markerElement = document.createElement('div');
         markerElement.style.backgroundColor = markerColor;
         markerElement.style.width = '12px';
@@ -96,12 +106,37 @@ function handleStepEnter(response) {
         markerElement.style.borderRadius = '50%';
         markerElement.style.border = '2px solid white';
 
-        // Add the marker to the map
-        new maplibregl.Marker({ element: markerElement })
-          .setLngLat([location.Longitude, location.Latitude]) // Set marker coordinates
-          .addTo(map); // Add marker to the map
+        const marker = new maplibregl.Marker({ element: markerElement })
+          .setLngLat([location.Longitude, location.Latitude])
+          .addTo(map);
+
+        markerLookup.set(`${location.Longitude},${location.Latitude}`, marker);
       }
     });
+  }
+
+  if (activeStep == 4) {
+    console.log('DO THE STEP FOUR STUFF...');
+    // Change the color of markers based on status}
+
+    // Update marker colors based on status
+    markerLookup.forEach((marker, key) => {
+      console.log('key', key);
+      const [lng, lat] = key.split(',').map(Number);
+      const markerData = lc.find(
+        (location) => location.Longitude === lng && location.Latitude === lat
+      );
+      console.log('markerData', markerData);
+
+      if (markerData) {
+        const markerElement = marker.getElement();
+        markerElement.style.backgroundColor =
+          markerData.status === 'Did not answer the survey' ? 'gray' : 'blue';
+      }
+    });
+  }
+
+  if (activeStep == 5) {
   }
   console.log('activeStep', activeStep);
 }
