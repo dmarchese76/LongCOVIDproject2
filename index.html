@@ -10,13 +10,27 @@
 {% endblock scripts %}
 
 {% block content %}
-
+<nav class="masthead">
+	<div class="masthead-content">
+	  <a href="/" class="logo">The Sick Times</a>
+	</div>
+  </nav>
 <section class="container"> 
-  <h1>Long Covid Clinics project</h1>
-  <!-- <p>The last piece of the puzzle is the scrollama callback functions. In the first one, we can trigger changes to the chart by handling which step becomes active. In the enter and exit callback functions, we stick and unstick the graphic, respectively.</p> -->
-  {% for p in copy.top_text %}
-	<p>{{ p.value }}</p>
-  {% endfor %}
+<section class="story-header">
+	<h1 class="headline">Where Have All the Long COVID Clinics Gone?</h1>
+	
+	<p class="dek">A nationwide survey reveals the uncertain state of specialized care for Americans living with the chronic condition</p>
+	
+	<div class="byline">
+	  <span class="author">Delfina Marchese</span> | 
+	</div>
+	
+	<div class="intro-text">
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	  
+	  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	</div>
+  </section>
 </section>
 
 
@@ -39,10 +53,13 @@
 </section>
 
 <section class="container">
+	<div class="intro-text">
   {% for p in copy.bottom_text %}
     <p>{{ p.value }}</p>
   {% endfor %}
+	</div>
 </section>
+
 
 {% endblock content %}
 

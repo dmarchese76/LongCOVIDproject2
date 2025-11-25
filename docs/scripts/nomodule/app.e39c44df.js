@@ -49842,14 +49842,14 @@
       },
       {
         Name: 'MedHelp Highway 280',
-        Longitude: null,
-        Latitude: null,
+        Longitude: '',
+        Latitude: '',
         status: 'Did not answer the survey',
       },
       {
         Name: '',
-        Longitude: null,
-        Latitude: null,
+        Longitude: '',
+        Latitude: '',
         status: 'Did not answer the survey',
       },
       {
@@ -49890,8 +49890,8 @@
       },
       {
         Name: 'Neuroversion',
-        Longitude: null,
-        Latitude: null,
+        Longitude: '',
+        Latitude: '',
         status: 'Did not answer the survey',
       },
       {
@@ -49934,7 +49934,7 @@
         Name: 'Atlantis Physical Therapy COVID-19 Rehabilitation Program',
         Longitude: -118.3474276,
         Latitude: 33.8359868,
-        status: 'Yes, They offer care',
+        status: 'Yes, they offer care',
       },
       {
         Name: 'Center for Complex Diseases',
@@ -49952,7 +49952,7 @@
         Name: 'Keck Medicine of USC COVID Recovery Clinic',
         Longitude: -118.2015033,
         Latitude: 34.061963,
-        status: 'Yes, They offer care',
+        status: 'Yes, they offer care',
       },
       {
         Name: 'Loma Linda University Health COVID-19 Heart Clinic',
@@ -50006,25 +50006,25 @@
         Name: 'RTHM Clinic: Long COVID Telehealth and Treatment',
         Longitude: -122.2042768,
         Latitude: 37.4831626,
-        status: 'Yes, They offer care',
+        status: 'Yes, they offer care',
       },
       {
         Name: 'Scripps Health COVID Recovery Program',
         Longitude: -117.1601602,
         Latitude: 32.7503541,
-        status: 'Did not answer the survey',
+        status: 'No longer offers Long COVID Care',
       },
       {
         Name: 'Scripps Health COVID Recovery Program',
         Longitude: -117.2429852,
         Latitude: 32.898542,
-        status: 'Did not answer the survey',
+        status: 'No longer offers Long COVID Care',
       },
       {
         Name: 'Sharp Allison deRose Rehabilitation Center, Sharp Grossmont Hospital Burr Heart & Lung Clinic',
         Longitude: -117.1549487,
         Latitude: 32.7974103,
-        status: 'Did not answer the survey',
+        status: 'Yes, they offer care',
       },
       {
         Name: 'Providence St. Jude Medical Center Post-COVID Rehabilitation Program, Wellness Program',
@@ -50066,7 +50066,7 @@
         Name: 'University of California, Los Angeles (UCLA) Post-COVID Clinic',
         Longitude: -118.7037075,
         Latitude: 34.1427903,
-        status: 'Did not answer the survey',
+        status: 'Yes, they offer care',
       },
       {
         Name: 'Valley Comprehensive Outpatient Rehabilitation Facility (CORF)',
@@ -50142,8 +50142,8 @@
       },
       {
         Name: '',
-        Longitude: null,
-        Latitude: null,
+        Longitude: '',
+        Latitude: '',
         status: 'Did not answer the survey',
       },
       {
@@ -50156,7 +50156,7 @@
         Name: 'Gaylord Specialty Healthcare Post-COVID Outpatient Center',
         Longitude: -72.8570866,
         Latitude: 41.4725507,
-        status: 'Yes, They offer care',
+        status: 'Yes, they offer care',
       },
       {
         Name: 'Hartford Healthcare COVID Recovery Center',
@@ -50262,8 +50262,8 @@
       },
       {
         Name: '',
-        Longitude: null,
-        Latitude: null,
+        Longitude: '',
+        Latitude: '',
         status: 'Did not answer the survey',
       },
       {
@@ -50516,7 +50516,7 @@
         Name: 'Shirley Ryan AbilityLab COVID Care Unit',
         Longitude: -87.6181751,
         Latitude: 41.8939453,
-        status: 'Yes, They offer care',
+        status: 'Yes, they offer care',
       },
       {
         Name: 'SIU Medicine Post-COVID Recovery Clinic',
@@ -50852,7 +50852,7 @@
         Name: 'Bay State Physical Therapy Post-Acute COVID Care',
         Longitude: -71.1589429,
         Latitude: 41.6727988,
-        status: 'Declined to answer',
+        status: 'They declined to answer',
       },
       {
         Name: 'Spaulding Rehabilitation Network COVID Rehab Program',
@@ -51104,7 +51104,7 @@
         Name: 'Dartmouth-Hitchcock Post-Acute COVID Syndrome Clinic',
         Longitude: -72.2729588,
         Latitude: 43.6754932,
-        status: 'Declined to answer',
+        status: 'They declined to answer',
       },
       {
         Name: 'Advantage Therapy Centers Post-COVID Rehabilitation Program',
@@ -51260,12 +51260,12 @@
         Name: 'Mount Sinai Hospital Center for Advanced Medicine',
         Longitude: -73.9520137,
         Latitude: 40.7914837,
-        status: 'Did not answer the survey',
+        status: 'Yes, they offer care',
       },
       {
         Name: 'Mount Sinai Cohen Center for Recovery from Complex Chronic Illnesses (CoRE)',
-        Longitude: null,
-        Latitude: null,
+        Longitude: '',
+        Latitude: '',
         status: 'Did not answer the survey',
       },
       {
@@ -51392,25 +51392,25 @@
         Name: 'NYU Langone Huntington Medical Group COVID-19 Recovery Care',
         Longitude: -73.2849893,
         Latitude: 40.8438209,
-        status: 'Did not answer the survey',
+        status: 'Yes, they offer care',
       },
       {
         Name: 'NYU Langone Huntington Medical Group COVID-19 Recovery Care',
         Longitude: -73.39988,
         Latitude: 40.8526173,
-        status: 'Did not answer the survey',
+        status: 'Yes, they offer care',
       },
       {
         Name: 'NYU Langone Huntington Medical Group COVID-19 Recovery Care',
         Longitude: -73.3948611,
         Latitude: 40.8575296,
-        status: 'Did not answer the survey',
+        status: 'Yes, they offer care',
       },
       {
         Name: 'NYU Langone Post-COVID Care Program',
         Longitude: -73.9740737,
         Latitude: 40.7493378,
-        status: 'Did not answer the survey',
+        status: 'Yes, they offer care',
       },
       {
         Name: 'Richmond University Medical Center Post COVID-19 Care Center',
@@ -51788,19 +51788,19 @@
         Name: 'Bay State Physical Therapy Post-Acute COVID Care',
         Longitude: -71.4570502,
         Latitude: 41.4950487,
-        status: 'Declined to answer',
+        status: 'They declined to answer',
       },
       {
         Name: 'Bay State Physical Therapy Post-Acute COVID Care',
         Longitude: -71.4959791,
         Latitude: 41.6614248,
-        status: 'Declined to answer',
+        status: 'They declined to answer',
       },
       {
         Name: 'Bay State Physical Therapy Post-Acute COVID Care',
         Longitude: -71.4110556,
         Latitude: 41.8090499,
-        status: 'Declined to answer',
+        status: 'They declined to answer',
       },
       {
         Name: 'Spaulding Rehabilitation Network COVID Rehab Program',
@@ -51902,7 +51902,7 @@
         Name: 'Ballad Health Center for Post-COVID Care',
         Longitude: -82.5518921,
         Latitude: 36.5576411,
-        status: 'Declined to answer',
+        status: 'They declined to answer',
       },
       {
         Name: 'Select Physical Therapy COVID-19 and Chronic Illness Recovery and Reconditioning program',
@@ -52356,9 +52356,9 @@
       },
       {
         Name: 'University of Southern California',
-        Longitude: null,
-        Latitude: null,
-        status: 'Did not answer the survey',
+        Longitude: '',
+        Latitude: '',
+        status: 'They declined to answer',
       },
       {
         Name: 'GW Center for Integrative Medicine',
@@ -52370,49 +52370,65 @@
         Name: 'Albert Einstein College of Medicine',
         Longitude: -73.989308,
         Latitude: 40.741895,
-        status: 'No, they never offered care',
+        status: 'Never provided care',
       },
     ];
   console.log('Hello bakers');
-  const Ei = new Li.Map({
+  let Ei = [];
+  const Ri = new Li.Map({
     container: 'map',
-    style: 'https://demotiles.maplibre.org/globe.json',
+    style:
+      'https://raw.githubusercontent.com/go2garret/maps/main/src/assets/json/openStreetMap.json',
     center: [-98.5795, 39.8283],
     zoom: 4,
     interactive: !1,
   });
-  Ei.on('load', () => {
-    Ei.setProjection('equalEarth'),
-      Ei.fitBounds(
+  Ri.on('load', () => {
+    Ri.setProjection('equalEarth'),
+      Ri.fitBounds(
         [
           [-125, 24.5],
           [-66.9, 49.4],
         ],
         { padding: 80, duration: 1e3 }
       ),
-      Ei.resize(),
+      Ri.resize(),
+      Ai.forEach((t) => {
+        if (t.Longitude && t.Latitude) {
+          const e = document.createElement('div');
+          (e.style.backgroundColor = '#5f50ad'),
+            (e.style.width = '12px'),
+            (e.style.height = '12px'),
+            (e.style.borderRadius = '50%'),
+            (e.style.border = '2px solid white'),
+            (e.style.display = 'none');
+          const i = new Li.Marker({ element: e })
+            .setLngLat([t.Longitude, t.Latitude])
+            .addTo(Ri);
+          Ei.push([i, t]);
+        }
+      }),
+      console.log(Ei, 'Marker lookup initialized.'),
       console.log('init'),
-      Oi(),
-      ki
-        .setup({
-          container: '#scroll',
-          graphic: '.scroll__graphic',
-          text: '.scroll__text',
-          step: '.scroll__text .step',
-          offset: 0.5,
-          debug: !1,
-        })
-        .onStepEnter(Bi),
-      window.addEventListener('resize', Oi);
+      Fi(),
+      Oi.setup({
+        container: '#scroll',
+        graphic: '.scroll__graphic',
+        text: '.scroll__text',
+        step: '.scroll__text .step',
+        offset: 0.5,
+        debug: !1,
+      }).onStepEnter(Vi),
+      window.addEventListener('resize', Fi);
   });
-  const Ri = (function (t) {
+  const zi = (function (t) {
     return 'string' == typeof t
       ? new St([[document.querySelector(t)]], [document.documentElement])
       : new St([[t]], It);
   })('#scroll');
-  Ri.select('.scroll__graphic').select('.chart');
-  const zi = Ri.select('.scroll__text').selectAll('.step'),
-    ki = (function () {
+  zi.select('.scroll__graphic').select('.chart');
+  const ki = zi.select('.scroll__text').selectAll('.step'),
+    Oi = (function () {
       let c,
         h,
         u,
@@ -52619,50 +52635,142 @@
         R
       );
     })();
-  function Oi() {
-    ki.resize();
+  function Fi() {
+    Oi.resize();
   }
-  let Fi = new Map();
-  function Bi(t) {
+  function Bi() {
+    const t = document.getElementById('image-popup-container-2');
+    t &&
+      (t.classList.remove('active'),
+      setTimeout(() => {
+        t.innerHTML = '';
+      }, 500));
+  }
+  function Ni() {
+    const t = document.getElementById('image-popup-container');
+    t &&
+      (t.classList.remove('active'),
+      setTimeout(() => {
+        t.innerHTML = '';
+      }, 500));
+  }
+  function Vi(t) {
     console.log('handleStepEnter', t),
-      zi.classed('is-active', function (e, i) {
+      ki.classed('is-active', function (e, i) {
         return i === t.index;
       });
     var e = t.index + 1;
-    1 == e &&
-      (console.log('DO THE STEP ONE STUFF...'),
-      Fi.forEach((t) => {
-        t.remove();
-      }),
-      Fi.clear(),
-      Ai.forEach((t) => {
-        if (t.Longitude && t.Latitude) {
-          const e =
-              'yes' === t.status ? 'green' : 'no' === t.status ? 'red' : 'blue',
-            i = document.createElement('div');
-          (i.style.backgroundColor = e),
-            (i.style.width = '12px'),
-            (i.style.height = '12px'),
-            (i.style.borderRadius = '50%'),
-            (i.style.border = '2px solid white');
-          const r = new Li.Marker({ element: i })
-            .setLngLat([t.Longitude, t.Latitude])
-            .addTo(Ei);
-          Fi.set(`${t.Longitude},${t.Latitude}`, r);
-        }
-      })),
+    if (
+      (1 == e &&
+        (console.log('DO THE STEP ONE STUFF...'),
+        Ei.forEach((t) => {
+          t[0].getElement().style.display = 'block';
+        })),
+      2 == e && (console.log('DO THE STEP TWO STUFF...'), Bi()),
+      3 == e &&
+        (console.log('DO THE STEP THREE STUFF...'),
+        (function () {
+          let t = document.getElementById('image-popup-container-2');
+          t ||
+            ((t = document.createElement('div')),
+            (t.id = 'image-popup-container-2'),
+            document.body.appendChild(t)),
+            (t.innerHTML = '');
+          const e = [
+            '/assets/images/Form1.png',
+            '/assets/images/Form2.png',
+            '/assets/images/Form3.png',
+            '/assets/images/Form4.png',
+            '/assets/images/Form5.png',
+            '/assets/images/Form6.png',
+            '/assets/images/Form7.png',
+            '/assets/images/Form8.png',
+          ];
+          for (let i = 0; i < e.length; i++) {
+            const r = document.createElement('img');
+            (r.src = e[i]),
+              (r.className = 'popup-image2'),
+              (r.style.animationDelay = 0.1 * i + 's'),
+              t.appendChild(r);
+          }
+          t.classList.add('active'),
+            console.log('Added active class, total images:', e.length);
+        })()),
       4 == e &&
         (console.log('DO THE STEP FOUR STUFF...'),
-        Fi.forEach((t, e) => {
-          console.log('key', e);
-          const [i, r] = e.split(',').map(Number),
-            n = Ai.find((t) => t.Longitude === i && t.Latitude === r);
-          if ((console.log('markerData', n), n)) {
-            t.getElement().style.backgroundColor =
-              'Did not answer the survey' === n.status ? 'gray' : 'blue';
+        Ni(),
+        Bi(),
+        Ei.forEach((t) => {
+          if ('Did not answer the survey' === t[1].status) {
+            t[0].getElement().style.display = 'none';
           }
         })),
-      console.log('activeStep', e);
+      5 == e &&
+        (console.log('SHOWING IMAGE POPUPS...'),
+        (function () {
+          let t = document.getElementById('image-popup-container');
+          t ||
+            ((t = document.createElement('div')),
+            (t.id = 'image-popup-container'),
+            document.body.appendChild(t)),
+            (t.innerHTML = '');
+          const e = [
+            '/assets/images/Email1.png',
+            '/assets/images/Email2.png',
+            '/assets/images/Email3.png',
+            '/assets/images/Email4.png',
+            '/assets/images/Email5.png',
+            '/assets/images/Email6.png',
+            '/assets/images/Email7.png',
+            '/assets/images/Email8.png',
+            '/assets/images/Email9.png',
+            '/assets/images/Email10.png',
+          ];
+          for (let i = 0; i < 18 * e.length; i++) {
+            const r = e[i % e.length],
+              n = document.createElement('img');
+            (n.src = r), (n.className = 'popup-image');
+            const a = 85 * Math.random(),
+              s = 85 * Math.random(),
+              o = 30 * (Math.random() - 0.5),
+              l = 0.8 + 0.2 * Math.random();
+            (n.style.left = `${a}%`),
+              (n.style.top = `${s}%`),
+              (n.style.transform = `rotate(${o}deg) scale(${l})`),
+              (n.style.animationDelay = (i % 20) * 0.1 + 's'),
+              t.appendChild(n);
+          }
+          t.classList.add('active');
+        })(),
+        Ei.forEach((t) => {
+          t[0].getElement().classList.remove('marker-with-pulse');
+        })),
+      6 == e)
+    ) {
+      console.log('DO THE STEP SIX STUFF...'),
+        console.log('Number of markers in lookup:', Ei.size),
+        Ni();
+      let t = 0;
+      Ei.forEach((t) => {
+        if ('Yes, they offer care' === t[1].status) {
+          const e = t[0].getElement();
+          (e.style.backgroundColor = '#5f50ad'),
+            e.classList.add('marker-with-pulse');
+        }
+        if ('No longer offers Long COVID Care' === t[1].status) {
+          t[0].getElement().style.backgroundColor = '#b5afa4';
+        }
+      }),
+        console.log('Total clinics that offer care:', t);
+    }
+    7 == e &&
+      (console.log('DO THE STEP SEVEN STUFF...'),
+      Ei.forEach((t) => {
+        if ('Did not answer the survey' === t[1].status) {
+          const e = t[0].getElement();
+          (e.style.backgroundColor = '#b5afa4'), (e.style.display = 'block');
+        }
+      }));
   }
 })();
-//# sourceMappingURL=app.3b3051d8.js.map
+//# sourceMappingURL=app.e39c44df.js.map
