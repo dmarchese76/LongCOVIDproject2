@@ -15,6 +15,7 @@ const map = new maplibregl.Map({
   center: [-98.5795, 39.8283], // Chicago's coordinates [lng, lat]
   zoom: 4, // starting zoom
   interactive: false, // Disable map interactions
+  projection: 'equalEarth', // Use Equal Earth projection
 });
 
 function panAndZoomMap(lng, lat, zoomLevel) {
@@ -27,7 +28,6 @@ function panAndZoomMap(lng, lat, zoomLevel) {
 }
 
 map.on('load', () => {
-  map.setProjection('equalEarth');
   map.fitBounds(
     [
       [-125.0, 24.5], // Southwest coordinates (roughly southern CA/TX)
@@ -68,8 +68,6 @@ map.on('load', () => {
 
 // using d3 for convenience, and storing a selected elements
 const container = d3.select('#scroll');
-const graphic = container.select('.scroll__graphic');
-const chart = graphic.select('.chart');
 const text = container.select('.scroll__text');
 const step = text.selectAll('.step');
 
@@ -77,21 +75,9 @@ const step = text.selectAll('.step');
 const scroller = scrollama();
 
 function handleResize() {
-  // 1. update height of step elements for breathing room between steps
-  const stepHeight = Math.floor(window.innerHeight * 0.5);
-  //step.style('height', stepHeight + 'px');
-
-  // 2. update height of graphic element
-  var graphicHeight = window.innerHeight / 2;
-  var graphicMarginTop = (window.innerHeight - graphicHeight) / 2;
-
-  graphic;
-  //.style('height', graphicHeight + 'px')
-  // .style('top', graphicMarginTop + 'px');
-
-  // 4. tell scrollama to update new element dimensions
   scroller.resize();
 }
+
 function showImagePopups2() {
   let popupContainer2 = document.getElementById('image-popup-container-2');
   if (!popupContainer2) {
@@ -108,10 +94,9 @@ function showImagePopups2() {
 
     popupContainer2.appendChild(imgElement);
   }
-
   popupContainer2.classList.add('active');
-  console.log('Added active class, total images:', images.length);
 }
+
 function hideImagePopups2() {
   const popupContainer2 = document.getElementById('image-popup-container-2');
   if (popupContainer2) {
@@ -136,28 +121,14 @@ function showImagePopups() {
   // Clear any existing popups
   popupContainer.innerHTML = '';
 
-  // Array of your image URLs
-  const images = [
-    '/assets/images/Email1.png',
-    '/assets/images/Email2.png',
-    '/assets/images/Email3.png',
-    '/assets/images/Email4.png',
-    '/assets/images/Email5.png',
-    '/assets/images/Email6.png',
-    '/assets/images/Email7.png',
-    '/assets/images/Email8.png',
-    '/assets/images/Email9.png',
-    '/assets/images/Email10.png',
-  ];
-
   // Calculate how many times we need to repeat to fill the screen
   // Approximately 3-4 rows and 2-3 columns should fill most screens
   // Calculate how many times we need to repeat to fill the screen
   const repeats = 18; // This will create 60 images (10 images × 6 repeats)
 
   // Create images by repeating the array
-  for (let i = 0; i < images.length * repeats; i++) {
-    const imgSrc = images[i % images.length]; // Cycle through images
+  for (let i = 0; i < emailImages.length * repeats; i++) {
+    const imgSrc = emailImages[i % emailImages.length]; // Cycle through images
     const imgElement = document.createElement('img');
     imgElement.src = imgSrc;
     imgElement.className = 'popup-image';
@@ -183,6 +154,7 @@ function showImagePopups() {
   // Show the container
   popupContainer.classList.add('active');
 }
+
 function hideImagePopups() {
   const popupContainer = document.getElementById('image-popup-container');
   if (popupContainer) {
@@ -291,12 +263,14 @@ function handleStepEnter(response) {
     });
   }
 }
+
 function handleStepExit(response) {
   // Remove active class when exiting
   step.classed('is-active', function (d, i) {
     return false;
   });
 }
+
 function init() {
   console.log('init');
   // 1. call a resize on load to update width/height/position of elements
@@ -313,7 +287,8 @@ function init() {
       offset: 0.5, // set the trigger to be 1/2 way down screen
       debug: false, // display the trigger offset for testing
     })
-    .onStepEnter(handleStepEnter);
+    .onStepEnter(handleStepEnter)
+    .onStepExit(handleStepExit);
 
   // setup resize event
   window.addEventListener('resize', handleResize);

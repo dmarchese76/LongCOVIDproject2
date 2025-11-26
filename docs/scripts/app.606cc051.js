@@ -51609,16 +51609,16 @@ const Ri = new Li.Map({
   center: [-98.5795, 39.8283],
   zoom: 4,
   interactive: !1,
+  projection: 'equalEarth',
 });
 Ri.on('load', () => {
-  Ri.setProjection('equalEarth'),
-    Ri.fitBounds(
-      [
-        [-125, 24.5],
-        [-66.9, 49.4],
-      ],
-      { padding: 80, duration: 1e3 }
-    ),
+  Ri.fitBounds(
+    [
+      [-125, 24.5],
+      [-66.9, 49.4],
+    ],
+    { padding: 80, duration: 1e3 }
+  ),
     Ri.resize(),
     Ai.forEach((t) => {
       if (t.Longitude && t.Latitude) {
@@ -51645,16 +51645,17 @@ Ri.on('load', () => {
       step: '.scroll__text .step',
       offset: 0.5,
       debug: !1,
-    }).onStepEnter(Vi),
+    })
+      .onStepEnter(Vi)
+      .onStepExit(ji),
     window.addEventListener('resize', Fi);
 });
 const zi = (function (t) {
-  return 'string' == typeof t
-    ? new St([[document.querySelector(t)]], [document.documentElement])
-    : new St([[t]], It);
-})('#scroll');
-zi.select('.scroll__graphic').select('.chart');
-const ki = zi.select('.scroll__text').selectAll('.step'),
+    return 'string' == typeof t
+      ? new St([[document.querySelector(t)]], [document.documentElement])
+      : new St([[t]], It);
+  })('#scroll'),
+  ki = zi.select('.scroll__text').selectAll('.step'),
   Oi = (function () {
     let c,
       h,
@@ -51906,8 +51907,7 @@ function Vi(t) {
             (i.style.animationDelay = 0.1 * e + 's'),
             t.appendChild(i);
         }
-        t.classList.add('active'),
-          console.log('Added active class, total images:', images.length);
+        t.classList.add('active');
       })()),
     4 == e &&
       (console.log('DO THE STEP FOUR STUFF...'),
@@ -51927,31 +51927,19 @@ function Vi(t) {
           (t.id = 'image-popup-container'),
           document.body.appendChild(t)),
           (t.innerHTML = '');
-        const e = [
-          '/assets/images/Email1.png',
-          '/assets/images/Email2.png',
-          '/assets/images/Email3.png',
-          '/assets/images/Email4.png',
-          '/assets/images/Email5.png',
-          '/assets/images/Email6.png',
-          '/assets/images/Email7.png',
-          '/assets/images/Email8.png',
-          '/assets/images/Email9.png',
-          '/assets/images/Email10.png',
-        ];
-        for (let i = 0; i < 18 * e.length; i++) {
-          const r = e[i % e.length],
-            n = document.createElement('img');
-          (n.src = r), (n.className = 'popup-image');
-          const a = 85 * Math.random(),
-            s = 85 * Math.random(),
-            o = 30 * (Math.random() - 0.5),
-            l = 0.8 + 0.2 * Math.random();
-          (n.style.left = `${a}%`),
-            (n.style.top = `${s}%`),
-            (n.style.transform = `rotate(${o}deg) scale(${l})`),
-            (n.style.animationDelay = (i % 20) * 0.1 + 's'),
-            t.appendChild(n);
+        for (let e = 0; e < 18 * emailImages.length; e++) {
+          const i = emailImages[e % emailImages.length],
+            r = document.createElement('img');
+          (r.src = i), (r.className = 'popup-image');
+          const n = 85 * Math.random(),
+            a = 85 * Math.random(),
+            s = 30 * (Math.random() - 0.5),
+            o = 0.8 + 0.2 * Math.random();
+          (r.style.left = `${n}%`),
+            (r.style.top = `${a}%`),
+            (r.style.transform = `rotate(${s}deg) scale(${o})`),
+            (r.style.animationDelay = (e % 20) * 0.1 + 's'),
+            t.appendChild(r);
         }
         t.classList.add('active');
       })(),
@@ -51985,4 +51973,9 @@ function Vi(t) {
       }
     }));
 }
-//# sourceMappingURL=app.65448099.js.map
+function ji(t) {
+  ki.classed('is-active', function (t, e) {
+    return !1;
+  });
+}
+//# sourceMappingURL=app.606cc051.js.map

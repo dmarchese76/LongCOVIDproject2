@@ -52,22 +52,18 @@
 	
 	<div class="intro-text">
 		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	  
-	  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	  	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 	</div>
   </section>
 </section>
 
 
 <section id='scroll'>
-	<!--  graphic container  -->
 	<div class='scroll__graphic'>
-		<!--   actual graphic/chart   -->
 		<div class='chart'>
-			<div id="map" style="position: relative; min-height: 400px: 100%; width: 100%;"></div>
+			<div id="map" style="position: relative; min-height: 400px; width: 100%;"></div>
 		</div>
 	</div>
-	<!--  step/text container  -->
 	<div class='scroll__text'>
 		{% for p in copy.steps %}
 			<div class='step' data-step='{{loop.index}}'>
@@ -79,9 +75,9 @@
 
 <section class="container">
 	<div class="intro-text">
-  {% for p in copy.bottom_text %}
-    <p>{{ p.value }}</p>
-  {% endfor %}
+	{% for p in copy.bottom_text %}
+		<p>{{ p.value }}</p>
+	{% endfor %}
 	</div>
 </section>
 {% endblock content %}
