@@ -6,6 +6,31 @@
 {% endblock styles %}
 
 {% block scripts %}
+<script>
+  const formImages = [
+	"{% static 'assets/images/Form1.png' %}",
+    '{% static "assets/images/Form2.png" %}',
+    '{% static "assets/images/Form3.png" %}',
+    '{% static "assets/images/Form4.png" %}',
+    '{% static "assets/images/Form5.png" %}',
+    '{% static "assets/images/Form6.png" %}',
+    '{% static "assets/images/Form7.png" %}',
+    '{% static "assets/images/Form8.png" %}',
+  ];
+  const emailImages = [
+    '{% static "assets/images/Email1.png" %}',
+    '{% static "assets/images/Email2.png" %}',
+    '{% static "assets/images/Email3.png" %}',
+    '{% static "assets/images/Email4.png" %}',
+    '{% static "assets/images/Email5.png" %}',
+    '{% static "assets/images/Email6.png" %}',
+    '{% static "assets/images/Email7.png" %}',
+    '{% static "assets/images/Email8.png" %}',
+    '{% static "assets/images/Email9.png" %}',
+    '{% static "assets/images/Email10.png" %}',
+  ];
+</script>
+
 {% script 'app' %}
 {% endblock scripts %}
 
@@ -59,7 +84,5 @@
   {% endfor %}
 	</div>
 </section>
-
-
 {% endblock content %}
 

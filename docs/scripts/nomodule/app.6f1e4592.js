@@ -52676,25 +52676,15 @@
             (t.id = 'image-popup-container-2'),
             document.body.appendChild(t)),
             (t.innerHTML = '');
-          const e = [
-            '/assets/images/Form1.png',
-            '/assets/images/Form2.png',
-            '/assets/images/Form3.png',
-            '/assets/images/Form4.png',
-            '/assets/images/Form5.png',
-            '/assets/images/Form6.png',
-            '/assets/images/Form7.png',
-            '/assets/images/Form8.png',
-          ];
-          for (let i = 0; i < e.length; i++) {
-            const r = document.createElement('img');
-            (r.src = e[i]),
-              (r.className = 'popup-image2'),
-              (r.style.animationDelay = 0.1 * i + 's'),
-              t.appendChild(r);
+          for (let e = 0; e < formImages.length; e++) {
+            const i = document.createElement('img');
+            (i.src = formImages[e]),
+              (i.className = 'popup-image2'),
+              (i.style.animationDelay = 0.1 * e + 's'),
+              t.appendChild(i);
           }
           t.classList.add('active'),
-            console.log('Added active class, total images:', e.length);
+            console.log('Added active class, total images:', images.length);
         })()),
       4 == e &&
         (console.log('DO THE STEP FOUR STUFF...'),
@@ -52773,4 +52763,4 @@
       }));
   }
 })();
-//# sourceMappingURL=app.e39c44df.js.map
+//# sourceMappingURL=app.6f1e4592.js.map

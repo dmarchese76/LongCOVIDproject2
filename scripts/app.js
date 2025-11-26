@@ -100,19 +100,9 @@ function showImagePopups2() {
     document.body.appendChild(popupContainer2);
   }
   popupContainer2.innerHTML = '';
-  const images = [
-    '/assets/images/Form1.png',
-    '/assets/images/Form2.png',
-    '/assets/images/Form3.png',
-    '/assets/images/Form4.png',
-    '/assets/images/Form5.png',
-    '/assets/images/Form6.png',
-    '/assets/images/Form7.png',
-    '/assets/images/Form8.png',
-  ];
-  for (let i = 0; i < images.length; i++) {
+  for (let i = 0; i < formImages.length; i++) {
     const imgElement = document.createElement('img');
-    imgElement.src = images[i];
+    imgElement.src = formImages[i];
     imgElement.className = 'popup-image2';
     imgElement.style.animationDelay = `${i * 0.1}s`;
 
