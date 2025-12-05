@@ -6,14 +6,36 @@
 {% endblock styles %}
 
 {% block scripts %}
+<script>
+  const formImages = [
+	"{% static 'assets/images/Form1.png' %}",
+    '{% static "assets/images/Form2.png" %}',
+    '{% static "assets/images/Form3.png" %}',
+    '{% static "assets/images/Form4.png" %}',
+    '{% static "assets/images/Form5.png" %}',
+    '{% static "assets/images/Form6.png" %}',
+  ];
+  const emailImages = [
+    '{% static "assets/images/Email1.png" %}',
+    '{% static "assets/images/Email2.png" %}',
+    '{% static "assets/images/Email3.png" %}',
+    '{% static "assets/images/Email4.png" %}',
+    '{% static "assets/images/Email5.png" %}',
+    '{% static "assets/images/Email6.png" %}',
+    '{% static "assets/images/Email7.png" %}',
+    '{% static "assets/images/Email8.png" %}',
+    '{% static "assets/images/Email9.png" %}',
+    '{% static "assets/images/Email10.png" %}',
+  ];
+</script>
+
 {% script 'app' %}
 {% endblock scripts %}
 
 {% block content %}
 <nav class="masthead">
 	<div class="masthead-content">
-		<img src="{% static 'assets/images/Tagline_Black.jpg' %}" alt="Tagline" class="masthead-image">
-		<!-- <a href="/" class="logo">The Sick Times</a> -->
+		<img src="{% static 'assets/images/logo.svg' %}" alt="Tagline" class="masthead-image">
 	  </div>
   </nav>
 <section class="container"> 
@@ -28,22 +50,18 @@
 	
 	<div class="intro-text">
 		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	  
-	  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	  	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 	</div>
   </section>
 </section>
 
 
 <section id='scroll'>
-	<!--  graphic container  -->
 	<div class='scroll__graphic'>
-		<!--   actual graphic/chart   -->
 		<div class='chart'>
-			<div id="map" style="position: relative; min-height: 400px: 100%; width: 100%;"></div>
+			<div id="map" style="position: relative; min-height: 400px; width: 100%;"></div>
 		</div>
 	</div>
-	<!--  step/text container  -->
 	<div class='scroll__text'>
 		{% for p in copy.steps %}
 			<div class='step' data-step='{{loop.index}}'>
@@ -55,12 +73,10 @@
 
 <section class="container">
 	<div class="intro-text">
-  {% for p in copy.bottom_text %}
-    <p>{{ p.value }}</p>
-  {% endfor %}
+	{% for p in copy.bottom_text %}
+		<p>{{ p.value }}</p>
+	{% endfor %}
 	</div>
 </section>
-
-
 {% endblock content %}
 

@@ -6,6 +6,9 @@
 // Reusable settings
 @use './variables/colors';
 @use './variables/fonts';
+// Define breakpoint variables
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
 // Masthead navigation
 .masthead {
   background-color: #5f50ad;
@@ -42,7 +45,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: $breakpoint-lg) {
   .masthead {
     .logo {
       font-size: 1.25rem;
@@ -113,7 +116,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: $breakpoint-lg) {
   .story-header {
     padding: 1.5rem 1rem 2rem;
 
@@ -285,6 +288,18 @@
   animation: popIn 0.6s ease forwards;
 }
 
+// write a media query for popup-image2 below 768px
+@media (max-width: $breakpoint-lg) {
+  #image-popup-container-2 {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .popup-image2 {
+    max-width: 60%;
+  }
+}
+
 @keyframes blink {
   0%,
   100% {
@@ -328,7 +343,7 @@
   }
 }
 // Responsive adjustments
-@media (max-width: 768px) {
+@media (max-width: $breakpoint-lg) {
   #image-popup-container {
     .popup-image {
       max-width: 90%;
@@ -367,7 +382,7 @@
     opacity: 0;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: $breakpoint-lg) {
   #map {
     height: 110vh;
     height: 100dvh;
