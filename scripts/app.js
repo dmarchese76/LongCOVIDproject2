@@ -17,15 +17,6 @@ const map = new maplibregl.Map({
   interactive: false, // Disable map interactions
 });
 
-function panAndZoomMap(lng, lat, zoomLevel) {
-  map.flyTo({
-    center: [lng, lat], // New coordinates [lng, lat]
-    zoom: 4, // New zoom level
-    essential: true, // This ensures the animation is user-friendly
-    //padding: { top: 50, bottom: 50, left: 50, right: 50 } // Adjust padding as needed
-  });
-}
-
 map.on('load', () => {
   map.setProjection('equalEarth');
   map.fitBounds(
@@ -34,7 +25,7 @@ map.on('load', () => {
       [-66.9, 49.4], // Northeast coordinates (roughly Maine/North Dakota)
     ],
     {
-      padding: 80, // Optional: adds padding around the bounds
+      padding: 5, // Optional: adds padding around the bounds
       duration: 1000, // Optional: animation duration in ms
     }
   );

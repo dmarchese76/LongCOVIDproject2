@@ -10,7 +10,7 @@
 .masthead {
   background-color: #5f50ad;
   padding: 1rem 0;
-  position: sticky;
+  // position: sticky;
   top: 0;
   z-index: 1000;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -22,6 +22,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  .masthead-image {
+    height: 100px; /* Adjust as needed */
+    width: auto;
   }
 
   .logo {
@@ -308,12 +312,12 @@
   }
 }
 
-@keyframes popIn {
-  to {
-    opacity: 1;
-    transform: scale(1) rotate(0deg);
-  }
-}
+// @keyframes popIn {
+//   to {
+//     opacity: 1;
+//     transform: scale(1) rotate(0deg);
+//   }
+// }
 @keyframes blink {
   0%,
   100% {
@@ -364,6 +368,10 @@
   }
 }
 @media (max-width: 768px) {
+  #map {
+    height: 110vh;
+    height: 100dvh;
+  }
   .scroll__text {
     max-width: 80%; // Make it wider on mobile
     margin: 0 auto; // Center it
