@@ -51565,7 +51565,7 @@ Ri.on('load', () => {
     }),
     console.log(Ei, 'Marker lookup initialized.'),
     console.log('init'),
-    Fi(),
+    Gi(),
     Oi.setup({
       container: '#scroll',
       graphic: '.scroll__graphic',
@@ -51574,9 +51574,44 @@ Ri.on('load', () => {
       offset: 0.5,
       debug: !1,
     })
-      .onStepEnter(Vi)
-      .onStepExit(ji),
-    window.addEventListener('resize', Fi);
+      .onStepEnter(qi)
+      .onStepExit(
+        (function (t, e = 50) {
+          return function (...i) {
+            clearTimeout(Vi),
+              (Vi = setTimeout(() => {
+                t.apply(this, i);
+              }, e));
+          };
+        })(Hi, 50)
+      ),
+    window.addEventListener('scroll', ji),
+    (function () {
+      const t = document.getElementById('scroll');
+      t &&
+        (new IntersectionObserver(
+          (t) => {
+            t.forEach((t) => {
+              t.isIntersecting
+                ? (console.log(
+                    'Entering scroll section - running safety cleanup'
+                  ),
+                  Ui(),
+                  (Fi = -1),
+                  (Bi = !1))
+                : (console.log(
+                    'Exited scroll section - running safety cleanup'
+                  ),
+                  Ui());
+            });
+          },
+          { root: null, rootMargin: '0px', threshold: 0.1 }
+        ).observe(t),
+        setTimeout(() => {
+          Ui();
+        }, 500));
+    })(),
+    window.addEventListener('resize', Gi);
 });
 const zi = (function (t) {
     return 'string' == typeof t
@@ -51787,10 +51822,32 @@ const zi = (function (t) {
       R
     );
   })();
-function Fi() {
-  Oi.resize();
+let Fi = -1,
+  Bi = !1,
+  Ni = 0,
+  Vi = null;
+function ji() {
+  const t = Date.now(),
+    e = t - Ni;
+  return (Ni = t), e < 100;
 }
-function Bi() {
+function Ui() {
+  console.log('Running comprehensive popup cleanup...');
+  const t = document.getElementById('image-popup-container');
+  t && (t.classList.remove('active'), (t.innerHTML = ''));
+  const e = document.getElementById('image-popup-container-2');
+  e && (e.classList.remove('active'), (e.innerHTML = '')),
+    clearTimeout(Vi),
+    Ei.forEach((t) => {
+      const e = t[0].getElement();
+      e.classList.remove('marker-with-pulse'), (e.style.display = 'none');
+    }),
+    console.log('Cleanup completed');
+}
+function Gi() {
+  Oi && Oi.resize && Oi.resize();
+}
+function Zi() {
   const t = document.getElementById('image-popup-container-2');
   t &&
     (t.classList.remove('active'),
@@ -51798,7 +51855,7 @@ function Bi() {
       t.innerHTML = '';
     }, 500));
 }
-function Ni() {
+function $i() {
   const t = document.getElementById('image-popup-container');
   t &&
     (t.classList.remove('active'),
@@ -51806,105 +51863,119 @@ function Ni() {
       t.innerHTML = '';
     }, 500));
 }
-function Vi(t) {
-  console.log('handleStepEnter', t),
-    ki.classed('is-active', function (e, i) {
-      return i === t.index;
-    });
-  var e = t.index + 1;
-  if (
-    (1 == e &&
-      (console.log('DO THE STEP ONE STUFF...'),
+function qi(t) {
+  console.log('handleStepEnter', t);
+  const e = ji();
+  if (Bi) console.log('Skipping - still processing previous step', t.index);
+  else if (e && Math.abs(t.index - Fi) > 1)
+    console.log('Skipping large jump during rapid scrolling', t.index);
+  else {
+    (Bi = !0),
+      (Fi = t.index),
+      ki.classed('is-active', function (e, i) {
+        return i === t.index;
+      });
+    var i = t.index + 1;
+    if (
+      (1 == i &&
+        (console.log('DO THE STEP ONE STUFF...'),
+        Ei.forEach((t) => {
+          const e = t[0].getElement();
+          (e.style.display = 'block'), (e.style.backgroundColor = '#5f50ad');
+        })),
+      2 == i && (console.log('DO THE STEP TWO STUFF...'), Zi()),
+      3 == i &&
+        (console.log('DO THE STEP THREE STUFF...'),
+        (function () {
+          let t = document.getElementById('image-popup-container-2');
+          t ||
+            ((t = document.createElement('div')),
+            (t.id = 'image-popup-container-2'),
+            document.body.appendChild(t)),
+            (t.innerHTML = '');
+          const e = window.innerWidth <= 1024 ? 2 : formImages.length;
+          for (let i = 0; i < e; i++) {
+            const e = document.createElement('img');
+            (e.src = formImages[i]),
+              (e.className = 'popup-image2'),
+              (e.style.animationDelay = 0.1 * i + 's'),
+              t.appendChild(e);
+          }
+          t.classList.add('active');
+        })()),
+      4 == i &&
+        (console.log('DO THE STEP FOUR STUFF...'),
+        $i(),
+        Zi(),
+        Ei.forEach((t) => {
+          if ('Did not answer the survey' === t[1].status) {
+            t[0].getElement().style.display = 'none';
+          }
+        })),
+      5 == i &&
+        (console.log('SHOWING IMAGE POPUPS...'),
+        (function () {
+          let t = document.getElementById('image-popup-container');
+          t ||
+            ((t = document.createElement('div')),
+            (t.id = 'image-popup-container'),
+            document.body.appendChild(t)),
+            (t.innerHTML = '');
+          for (let e = 0; e < 18 * emailImages.length; e++) {
+            const i = emailImages[e % emailImages.length],
+              r = document.createElement('img');
+            (r.src = i), (r.className = 'popup-image');
+            const n = 85 * Math.random(),
+              a = 85 * Math.random(),
+              s = 30 * (Math.random() - 0.5),
+              o = 0.8 + 0.2 * Math.random();
+            (r.style.left = `${n}%`),
+              (r.style.top = `${a}%`),
+              (r.style.transform = `rotate(${s}deg) scale(${o})`),
+              (r.style.animationDelay = (e % 20) * 0.1 + 's'),
+              t.appendChild(r);
+          }
+          t.classList.add('active');
+        })(),
+        Ei.forEach((t) => {
+          t[0].getElement().classList.remove('marker-with-pulse');
+        })),
+      6 == i)
+    ) {
+      console.log('DO THE STEP SIX STUFF...'),
+        console.log('Number of markers in lookup:', Ei.size),
+        $i();
+      let t = 0;
       Ei.forEach((t) => {
-        t[0].getElement().style.display = 'block';
-      })),
-    2 == e && (console.log('DO THE STEP TWO STUFF...'), Bi()),
-    3 == e &&
-      (console.log('DO THE STEP THREE STUFF...'),
-      (function () {
-        let t = document.getElementById('image-popup-container-2');
-        t ||
-          ((t = document.createElement('div')),
-          (t.id = 'image-popup-container-2'),
-          document.body.appendChild(t)),
-          (t.innerHTML = '');
-        const e = window.innerWidth <= 1024 ? 2 : formImages.length;
-        for (let i = 0; i < e; i++) {
-          const e = document.createElement('img');
-          (e.src = formImages[i]),
-            (e.className = 'popup-image2'),
-            (e.style.animationDelay = 0.1 * i + 's'),
-            t.appendChild(e);
+        if ('Yes, they offer care' === t[1].status) {
+          const e = t[0].getElement();
+          (e.style.backgroundColor = '#5f50ad'),
+            e.classList.add('marker-with-pulse');
         }
-        t.classList.add('active');
-      })()),
-    4 == e &&
-      (console.log('DO THE STEP FOUR STUFF...'),
-      Ni(),
-      Bi(),
+        if ('No longer offers Long COVID Care' === t[1].status) {
+          t[0].getElement().style.backgroundColor = '#b5afa4';
+        }
+      }),
+        console.log('Total clinics that offer care:', t);
+    }
+    7 == i &&
+      (console.log('DO THE STEP SEVEN STUFF...'),
       Ei.forEach((t) => {
         if ('Did not answer the survey' === t[1].status) {
-          t[0].getElement().style.display = 'none';
+          const e = t[0].getElement();
+          (e.style.backgroundColor = '#b5afa4'), (e.style.display = 'block');
         }
       })),
-    5 == e &&
-      (console.log('SHOWING IMAGE POPUPS...'),
-      (function () {
-        let t = document.getElementById('image-popup-container');
-        t ||
-          ((t = document.createElement('div')),
-          (t.id = 'image-popup-container'),
-          document.body.appendChild(t)),
-          (t.innerHTML = '');
-        for (let e = 0; e < 18 * emailImages.length; e++) {
-          const i = emailImages[e % emailImages.length],
-            r = document.createElement('img');
-          (r.src = i), (r.className = 'popup-image');
-          const n = 85 * Math.random(),
-            a = 85 * Math.random(),
-            s = 30 * (Math.random() - 0.5),
-            o = 0.8 + 0.2 * Math.random();
-          (r.style.left = `${n}%`),
-            (r.style.top = `${a}%`),
-            (r.style.transform = `rotate(${s}deg) scale(${o})`),
-            (r.style.animationDelay = (e % 20) * 0.1 + 's'),
-            t.appendChild(r);
-        }
-        t.classList.add('active');
-      })(),
-      Ei.forEach((t) => {
-        t[0].getElement().classList.remove('marker-with-pulse');
-      })),
-    6 == e)
-  ) {
-    console.log('DO THE STEP SIX STUFF...'),
-      console.log('Number of markers in lookup:', Ei.size),
-      Ni();
-    let t = 0;
-    Ei.forEach((t) => {
-      if ('Yes, they offer care' === t[1].status) {
-        const e = t[0].getElement();
-        (e.style.backgroundColor = '#5f50ad'),
-          e.classList.add('marker-with-pulse');
-      }
-      if ('No longer offers Long COVID Care' === t[1].status) {
-        t[0].getElement().style.backgroundColor = '#b5afa4';
-      }
-    }),
-      console.log('Total clinics that offer care:', t);
+      setTimeout(() => {
+        Bi = !1;
+      }, 100);
   }
-  7 == e &&
-    (console.log('DO THE STEP SEVEN STUFF...'),
-    Ei.forEach((t) => {
-      if ('Did not answer the survey' === t[1].status) {
-        const e = t[0].getElement();
-        (e.style.backgroundColor = '#b5afa4'), (e.style.display = 'block');
-      }
-    }));
 }
-function ji(t) {
+function Hi(t) {
   ki.classed('is-active', function (t, e) {
     return !1;
-  });
+  }),
+    (2 !== t.index && 4 !== t.index) || Zi(),
+    5 === t.index && $i();
 }
-//# sourceMappingURL=app.cf8dfa21.js.map
+//# sourceMappingURL=app.4cd5e20b.js.map

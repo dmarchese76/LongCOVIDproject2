@@ -65,8 +65,66 @@ const step = text.selectAll('.step');
 // initialize the scrollama
 const scroller = scrollama();
 
+// State tracking
+let currentStep = -1;
+let isProcessing = false;
+let lastScrollTime = 0;
+let scrollTimeout = null;
+
+// Track scroll velocity to detect rapid scrolling
+function trackScrollVelocity() {
+  const now = Date.now();
+  const timeSinceLastScroll = now - lastScrollTime;
+  lastScrollTime = now;
+
+  // If scrolling very quickly (less than 100ms between scroll events), return true
+  return timeSinceLastScroll < 100;
+}
+
+// Light debounce for cleanup operations only
+function lightDebounce(func, delay = 50) {
+  return function (...args) {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      func.apply(this, args);
+    }, delay);
+  };
+}
+
+// Comprehensive cleanup function - fail-safe for popup issues
+function cleanupAllPopups() {
+  console.log('Running comprehensive popup cleanup...');
+
+  // Remove popup containers completely
+  const popupContainer = document.getElementById('image-popup-container');
+  if (popupContainer) {
+    popupContainer.classList.remove('active');
+    popupContainer.innerHTML = '';
+  }
+
+  const popupContainer2 = document.getElementById('image-popup-container-2');
+  if (popupContainer2) {
+    popupContainer2.classList.remove('active');
+    popupContainer2.innerHTML = '';
+  }
+
+  // Clear any pending timeouts
+  clearTimeout(scrollTimeout);
+
+  // Reset marker states to prevent visual artifacts
+  markerLookup.forEach((markerPair) => {
+    const markerElement = markerPair[0].getElement();
+    markerElement.classList.remove('marker-with-pulse');
+    markerElement.style.display = 'none';
+  });
+
+  console.log('Cleanup completed');
+}
+
 function handleResize() {
-  scroller.resize();
+  if (scroller && scroller.resize) {
+    scroller.resize();
+  }
 }
 
 function showImagePopups2() {
@@ -168,6 +226,26 @@ function handleStepEnter(response) {
   console.log('handleStepEnter', response);
   // response = { element, direction, index }
 
+  // Only apply strict protections during rapid scrolling
+  const isRapidScrolling = trackScrollVelocity();
+
+  // Prevent out-of-order execution during rapid scrolling
+  // Allow normal upward scrolling (response.index < currentStep) but block truly chaotic rapid scrolling
+  if (isProcessing) {
+    console.log('Skipping - still processing previous step', response.index);
+    return;
+  }
+
+  // Only block if we're rapidly scrolling AND the step jump is unreasonable (more than 2 steps difference)
+  if (isRapidScrolling && Math.abs(response.index - currentStep) > 1) {
+    console.log('Skipping large jump during rapid scrolling', response.index);
+    return;
+  }
+
+  // Set processing flag briefly to prevent immediate re-triggering
+  isProcessing = true;
+  currentStep = response.index;
+
   // fade in current step
   step.classed('is-active', function (d, i) {
     return i === response.index;
@@ -184,6 +262,7 @@ function handleStepEnter(response) {
       const marker = markerPair[0];
       const markerElement = marker.getElement();
       markerElement.style.display = 'block';
+      markerElement.style.backgroundColor = '#5f50ad';
     });
   }
 
@@ -260,6 +339,11 @@ function handleStepEnter(response) {
       }
     });
   }
+
+  // Mark processing as complete
+  setTimeout(() => {
+    isProcessing = false;
+  }, 100);
 }
 
 function handleStepExit(response) {
@@ -267,6 +351,14 @@ function handleStepExit(response) {
   step.classed('is-active', function (d, i) {
     return false;
   });
+
+  // Basic cleanup when exiting steps
+  if (response.index === 2 || response.index === 4) {
+    hideImagePopups2();
+  }
+  if (response.index === 5) {
+    hideImagePopups();
+  }
 }
 
 function init() {
@@ -286,8 +378,52 @@ function init() {
       debug: false, // display the trigger offset for testing
     })
     .onStepEnter(handleStepEnter)
-    .onStepExit(handleStepExit);
+    .onStepExit(lightDebounce(handleStepExit, 50));
+
+  // Add scroll event listener to track velocity
+  window.addEventListener('scroll', trackScrollVelocity);
+
+  // Add Intersection Observer for scroll section entry/exit detection
+  setupScrollSectionObserver();
 
   // setup resize event
   window.addEventListener('resize', handleResize);
+}
+
+// Setup Intersection Observer to detect when user enters/exits scroll section
+function setupScrollSectionObserver() {
+  const scrollSection = document.getElementById('scroll');
+  if (!scrollSection) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // User is entering the scroll section - cleanup any lingering issues
+          console.log('Entering scroll section - running safety cleanup');
+          cleanupAllPopups();
+
+          // Reset state for fresh start
+          currentStep = -1;
+          isProcessing = false;
+        } else {
+          // User has left the scroll section - cleanup for safety
+          console.log('Exited scroll section - running safety cleanup');
+          cleanupAllPopups();
+        }
+      });
+    },
+    {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1, // Trigger when 10% of the section is visible
+    }
+  );
+
+  observer.observe(scrollSection);
+
+  // Also run cleanup when page first loads
+  setTimeout(() => {
+    cleanupAllPopups();
+  }, 500);
 }

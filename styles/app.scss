@@ -396,3 +396,79 @@ $breakpoint-lg: 1024px;
     margin: 100% auto; // Center the steps
   }
 }
+
+// Footer styles - matched to reference site
+.site-footer {
+  background-color: #f8f8f8; // Exact light gray from reference
+  margin-top: 2.5em;
+  padding-top: 2.5em;
+  font-size: 0.875rem; // tiny font size to match reference
+  color: #333;
+  line-height: 1.5;
+  p {
+    margin: 0;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    a {
+      color: #5f50ad;
+      text-decoration: none;
+      transition: color 0.2s ease;
+      font-size: inherit;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 0 0.5rem;
+      gap: 1rem;
+    }
+
+    .footer-column {
+      flex: 1;
+      min-width: 250px;
+      padding: 0 0.5rem;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      padding-bottom: var(--wp--preset--spacing--40, 1.5rem);
+
+      li {
+        margin-bottom: 5px;
+        font-size: 0.875rem; // small font size
+      }
+    }
+  }
+
+  .footer-copyright {
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 11px;
+    color: #666;
+    text-transform: uppercase;
+    border-top: 1px solid #e0e0e0;
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: $breakpoint-md) {
+  .site-footer {
+    .footer-content {
+      flex-direction: column;
+    }
+
+    .footer-column {
+      margin-bottom: 0.5rem;
+      padding: 0;
+    }
+  }
+}
