@@ -91,36 +91,6 @@ function lightDebounce(func, delay = 50) {
   };
 }
 
-// Comprehensive cleanup function - fail-safe for popup issues
-function cleanupAllPopups() {
-  console.log('Running comprehensive popup cleanup...');
-
-  // Remove popup containers completely
-  const popupContainer = document.getElementById('image-popup-container');
-  if (popupContainer) {
-    popupContainer.classList.remove('active');
-    popupContainer.innerHTML = '';
-  }
-
-  const popupContainer2 = document.getElementById('image-popup-container-2');
-  if (popupContainer2) {
-    popupContainer2.classList.remove('active');
-    popupContainer2.innerHTML = '';
-  }
-
-  // Clear any pending timeouts
-  clearTimeout(scrollTimeout);
-
-  // Reset marker states to prevent visual artifacts
-  markerLookup.forEach((markerPair) => {
-    const markerElement = markerPair[0].getElement();
-    markerElement.classList.remove('marker-with-pulse');
-    markerElement.style.display = 'none';
-  });
-
-  console.log('Cleanup completed');
-}
-
 function handleResize() {
   if (scroller && scroller.resize) {
     scroller.resize();
@@ -383,47 +353,6 @@ function init() {
   // Add scroll event listener to track velocity
   window.addEventListener('scroll', trackScrollVelocity);
 
-  // Add Intersection Observer for scroll section entry/exit detection
-  setupScrollSectionObserver();
-
   // setup resize event
   window.addEventListener('resize', handleResize);
-}
-
-// Setup Intersection Observer to detect when user enters/exits scroll section
-function setupScrollSectionObserver() {
-  const scrollSection = document.getElementById('scroll');
-  if (!scrollSection) return;
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          // User is entering the scroll section - cleanup any lingering issues
-          console.log('Entering scroll section - running safety cleanup');
-          cleanupAllPopups();
-
-          // Reset state for fresh start
-          currentStep = -1;
-          isProcessing = false;
-        } else {
-          // User has left the scroll section - cleanup for safety
-          console.log('Exited scroll section - running safety cleanup');
-          cleanupAllPopups();
-        }
-      });
-    },
-    {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.1, // Trigger when 10% of the section is visible
-    }
-  );
-
-  observer.observe(scrollSection);
-
-  // Also run cleanup when page first loads
-  setTimeout(() => {
-    cleanupAllPopups();
-  }, 500);
 }

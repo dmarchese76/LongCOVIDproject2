@@ -51565,7 +51565,7 @@ Ri.on('load', () => {
     }),
     console.log(Ei, 'Marker lookup initialized.'),
     console.log('init'),
-    Gi(),
+    Ui(),
     Oi.setup({
       container: '#scroll',
       graphic: '.scroll__graphic',
@@ -51574,7 +51574,7 @@ Ri.on('load', () => {
       offset: 0.5,
       debug: !1,
     })
-      .onStepEnter(qi)
+      .onStepEnter($i)
       .onStepExit(
         (function (t, e = 50) {
           return function (...i) {
@@ -51583,35 +51583,10 @@ Ri.on('load', () => {
                 t.apply(this, i);
               }, e));
           };
-        })(Hi, 50)
+        })(qi, 50)
       ),
     window.addEventListener('scroll', ji),
-    (function () {
-      const t = document.getElementById('scroll');
-      t &&
-        (new IntersectionObserver(
-          (t) => {
-            t.forEach((t) => {
-              t.isIntersecting
-                ? (console.log(
-                    'Entering scroll section - running safety cleanup'
-                  ),
-                  Ui(),
-                  (Fi = -1),
-                  (Bi = !1))
-                : (console.log(
-                    'Exited scroll section - running safety cleanup'
-                  ),
-                  Ui());
-            });
-          },
-          { root: null, rootMargin: '0px', threshold: 0.1 }
-        ).observe(t),
-        setTimeout(() => {
-          Ui();
-        }, 500));
-    })(),
-    window.addEventListener('resize', Gi);
+    window.addEventListener('resize', Ui);
 });
 const zi = (function (t) {
     return 'string' == typeof t
@@ -51832,22 +51807,9 @@ function ji() {
   return (Ni = t), e < 100;
 }
 function Ui() {
-  console.log('Running comprehensive popup cleanup...');
-  const t = document.getElementById('image-popup-container');
-  t && (t.classList.remove('active'), (t.innerHTML = ''));
-  const e = document.getElementById('image-popup-container-2');
-  e && (e.classList.remove('active'), (e.innerHTML = '')),
-    clearTimeout(Vi),
-    Ei.forEach((t) => {
-      const e = t[0].getElement();
-      e.classList.remove('marker-with-pulse'), (e.style.display = 'none');
-    }),
-    console.log('Cleanup completed');
-}
-function Gi() {
   Oi && Oi.resize && Oi.resize();
 }
-function Zi() {
+function Gi() {
   const t = document.getElementById('image-popup-container-2');
   t &&
     (t.classList.remove('active'),
@@ -51855,7 +51817,7 @@ function Zi() {
       t.innerHTML = '';
     }, 500));
 }
-function $i() {
+function Zi() {
   const t = document.getElementById('image-popup-container');
   t &&
     (t.classList.remove('active'),
@@ -51863,7 +51825,7 @@ function $i() {
       t.innerHTML = '';
     }, 500));
 }
-function qi(t) {
+function $i(t) {
   console.log('handleStepEnter', t);
   const e = ji();
   if (Bi) console.log('Skipping - still processing previous step', t.index);
@@ -51883,7 +51845,7 @@ function qi(t) {
           const e = t[0].getElement();
           (e.style.display = 'block'), (e.style.backgroundColor = '#5f50ad');
         })),
-      2 == i && (console.log('DO THE STEP TWO STUFF...'), Zi()),
+      2 == i && (console.log('DO THE STEP TWO STUFF...'), Gi()),
       3 == i &&
         (console.log('DO THE STEP THREE STUFF...'),
         (function () {
@@ -51905,8 +51867,8 @@ function qi(t) {
         })()),
       4 == i &&
         (console.log('DO THE STEP FOUR STUFF...'),
-        $i(),
         Zi(),
+        Gi(),
         Ei.forEach((t) => {
           if ('Did not answer the survey' === t[1].status) {
             t[0].getElement().style.display = 'none';
@@ -51944,7 +51906,7 @@ function qi(t) {
     ) {
       console.log('DO THE STEP SIX STUFF...'),
         console.log('Number of markers in lookup:', Ei.size),
-        $i();
+        Zi();
       let t = 0;
       Ei.forEach((t) => {
         if ('Yes, they offer care' === t[1].status) {
@@ -51971,11 +51933,11 @@ function qi(t) {
       }, 100);
   }
 }
-function Hi(t) {
+function qi(t) {
   ki.classed('is-active', function (t, e) {
     return !1;
   }),
-    (2 !== t.index && 4 !== t.index) || Zi(),
-    5 === t.index && $i();
+    (2 !== t.index && 4 !== t.index) || Gi(),
+    5 === t.index && Zi();
 }
-//# sourceMappingURL=app.4cd5e20b.js.map
+//# sourceMappingURL=app.2418d1e0.js.map
