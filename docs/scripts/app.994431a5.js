@@ -51936,8 +51936,6 @@ function $i(t) {
 function qi(t) {
   ki.classed('is-active', function (t, e) {
     return !1;
-  }),
-    (2 !== t.index && 4 !== t.index) || Gi(),
-    5 === t.index && Zi();
+  });
 }
-//# sourceMappingURL=app.2418d1e0.js.map
+//# sourceMappingURL=app.994431a5.js.map

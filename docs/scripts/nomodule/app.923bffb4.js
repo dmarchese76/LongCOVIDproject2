@@ -52723,9 +52723,7 @@
   function qi(t) {
     ki.classed('is-active', function (t, e) {
       return !1;
-    }),
-      (2 !== t.index && 4 !== t.index) || Gi(),
-      5 === t.index && Zi();
+    });
   }
 })();
-//# sourceMappingURL=app.b3c13f1f.js.map
+//# sourceMappingURL=app.923bffb4.js.map

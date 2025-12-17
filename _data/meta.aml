@@ -1,23 +1,21 @@
 slug: baker-example-page-template
 
-site_name: Baker Examples
+site_name: The Sick Times
 locale: en_US
 
-headline: This is not a headline. Lorem ipsum dolor sit amet consectetur adipisicing
+headline: Where Have All the Long COVID Clinics Gone?
 
 [byline]
-name: This is not a name
-url: https://www.latimes.com/people/nobody
+name: Delfina Marchese
+url: https://thesicktimes.org/
 
-name: This is not a name
-url: https://www.latimes.com/people/nobody
 []
 
-pub_date: 2099-12-31 23:58:00
+pub_date: 2026-01-13 00:00:00
 update_date:
 
-seo_headline: This is not a search-engine optimized headline
-seo_description: This is not a search-engine optimized description
+seo_headline: Where Have All the Long COVID Clinics Gone?
+seo_description: Where Have All the Long COVID Clinics Gone?
 
 social_headline: Where Have All the Long COVID Clinics Gone?
 social_description: A nationwide survey reveals the uncertain state of specialized care for Americans living with the chronic condition

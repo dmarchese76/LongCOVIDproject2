@@ -323,12 +323,12 @@ function handleStepExit(response) {
   });
 
   // Basic cleanup when exiting steps
-  if (response.index === 2 || response.index === 4) {
-    hideImagePopups2();
-  }
-  if (response.index === 5) {
-    hideImagePopups();
-  }
+  // if (response.index === 2 || response.index === 4) {
+  //   hideImagePopups2();
+  // }
+  // if (response.index === 5) {
+  //   hideImagePopups();
+  // }
 }
 
 function init() {
