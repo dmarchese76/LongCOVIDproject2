@@ -471,4 +471,16 @@ $breakpoint-lg: 1024px;
       padding: 0;
     }
   }
+
+  // Make masthead logo smaller on mobile
+  .masthead .masthead-image {
+    height: 70px;
+  }
+
+  // Make H1 header larger on mobile
+  .story-header {
+    .headline {
+      font-size: 2.4rem;
+    }
+  }
 }
