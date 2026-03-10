@@ -49847,12 +49847,6 @@
         status: 'Did not answer the survey',
       },
       {
-        Name: null,
-        Longitude: null,
-        Latitude: null,
-        status: 'Did not answer the survey',
-      },
-      {
         Name: 'University of Alabama at Birmingham',
         Longitude: '-86.8156402',
         Latitude: '33.4986669',
@@ -51227,18 +51221,6 @@
         status: 'Yes, they offer care',
       },
       {
-        Name: 'Mount Sinai Cohen Center for Recovery from Complex Chronic Illnesses (CoRE)',
-        Longitude: null,
-        Latitude: null,
-        status: 'Yes, they offer care',
-      },
-      {
-        Name: 'Spear COVID-19 Rehab Therapy',
-        Longitude: '-73.9606898',
-        Latitude: '40.7198521',
-        status: 'Yes, they offer care',
-      },
-      {
         Name: 'Albany Medical College Post-COVID Care Clinic',
         Longitude: '-73.7733226',
         Latitude: '42.6533898',
@@ -51365,12 +51347,6 @@
         status: 'Did not answer the survey',
       },
       {
-        Name: 'Spear COVID-19 Rehab Therapy',
-        Longitude: '-73.7893286',
-        Latitude: '41.1314519',
-        status: 'Yes, they offer care',
-      },
-      {
         Name: 'St. Charles Hospital Post-COVID Outpatient Rehabilitation Program',
         Longitude: '-73.0612113',
         Latitude: '40.9450302',
@@ -51459,12 +51435,6 @@
         Longitude: '-78.5436807',
         Latitude: '35.9481617',
         status: 'Did not answer the survey',
-      },
-      {
-        Name: 'UNC COVID Recovery Clinic',
-        Longitude: '-79.0116227',
-        Latitude: '35.9461194',
-        status: 'Yes, they offer care',
       },
       {
         Name: 'WakeMed Rehabilitation Center COVID-19 Recovery Program',
@@ -52175,16 +52145,10 @@
         status: 'Did not answer the survey',
       },
       {
-        Name: 'University of Washington',
-        Longitude: '-122.3419756',
-        Latitude: '47.6236533',
-        status: 'Yes, they offer care',
-      },
-      {
         Name: 'UW Medicine Harborview Medical Center Post-COVID-19 Rehabilitation and Recovery Clinic',
         Longitude: '-122.3235328',
         Latitude: '47.6047183',
-        status: 'Did not answer the survey',
+        status: 'Yes, they offer care',
       },
       {
         Name: 'West Virginia University',
@@ -52221,6 +52185,36 @@
         Longitude: '-88.0242958',
         Latitude: '43.0408461',
         status: 'Did not answer the survey',
+      },
+      {
+        Name: 'Prevea COVID-19 Recovery Clinic',
+        Longitude: '-87.7367',
+        Latitude: '43.7198',
+        status: 'Did not answer the survey',
+      },
+      {
+        Name: 'Prevea COVID-19 Recovery Clinic',
+        Longitude: '-88.1281012',
+        Latitude: '44.8654981',
+        status: 'Did not answer the survey',
+      },
+      {
+        Name: 'Elkhorn Valley Rehabilitation Hospital',
+        Longitude: '-106.2423774',
+        Latitude: '42.8441018',
+        status: 'Did not answer the survey',
+      },
+      {
+        Name: 'GW Center for Integrative Medicine',
+        Longitude: '-77.0518879',
+        Latitude: '38.9010974',
+        status: 'Yes, they offer care',
+      },
+      {
+        Name: 'GW Center for Integrative Medicine',
+        Longitude: '-77.0518879',
+        Latitude: '38.9010974',
+        status: 'Yes, they offer care',
       },
       {
         Name: 'Prevea COVID-19 Recovery Clinic',
@@ -52672,4 +52666,4 @@
     });
   }
 })();
-//# sourceMappingURL=app.727e4924.js.map
+//# sourceMappingURL=app.b43484fd.js.map
